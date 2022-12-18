@@ -1,0 +1,1 @@
+enum TypeDrawer { drawer, endDrawer }
