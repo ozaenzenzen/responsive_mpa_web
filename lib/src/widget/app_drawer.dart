@@ -1,0 +1,27 @@
+import 'package:flutter/material.dart';
+import 'package:responsive_mpa_web/responsive_mpa_web.dart';
+
+class AppDrawer extends StatelessWidget {
+  final double width;
+  final Color color;
+
+  const AppDrawer({
+    Key? key,
+    this.width = 200,
+    this.color = Colors.white,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    return Container(
+      // width: width * 0.4,
+      width: width,
+      // color: Colors.blueGrey.shade300,
+      color: color,
+      child: ListView(
+        children: ResponsiveMPAWebConfig.listMenu,
+      ),
+    );
+  }
+}
