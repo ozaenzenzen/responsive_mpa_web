@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_mpa_web/responsive_mpa_web.dart';
 
+/// [AppBarMenuButton] is a widget to set up button of the appbar
+/// 
+/// This widget should be use inside [ResponsiveMPAWeb] widget 
+/// for `listMenu` parameter
 class AppBarMenuButton extends StatelessWidget {
   final Function(BuildContext context)? onTap;
   final int? indexPage;

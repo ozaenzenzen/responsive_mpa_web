@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_mpa_web/responsive_mpa_web.dart';
-import 'package:responsive_mpa_web/src/responsive_mpa_web.dart';
 
 part 'fullsize_scaffold.dart';
 part 'halfsize_scaffold.dart';
-part 'scaffold_page.dart';
 
 /// [WebPageWidget] is a main widget of this plugin. This widget have a purpose to create
 /// web page view.
@@ -91,6 +89,7 @@ class WebPageWidget extends StatefulWidget {
   final Widget? bodyOnHalfSize;
   final BoxDecoration? backgroundDecoration;
   final bool useCustomScaffold;
+  final double responsiveBounds;
 
   const WebPageWidget({
     Key? key,
@@ -101,6 +100,7 @@ class WebPageWidget extends StatefulWidget {
     required this.bodyOnHalfSize,
     required this.drawer,
     this.typeDrawer = TypeDrawer.endDrawer,
+    this.responsiveBounds = 1100,
     this.backgroundDecoration,
   })  : halfSizeScaffold = null,
         fullSizeScaffold = null,
@@ -114,6 +114,7 @@ class WebPageWidget extends StatefulWidget {
     required this.index,
     required this.halfSizeScaffold,
     required this.fullSizeScaffold,
+    this.responsiveBounds = 1100,
     this.backgroundDecoration,
   })  : appBar = null,
         bodyOnFullSize = null,
@@ -140,10 +141,10 @@ class _WebPageWidgetState extends State<WebPageWidget> {
           decoration: widget.backgroundDecoration,
         ),
         (widget.useCustomScaffold)
-            ? (width < 1100)
+            ? (width < widget.responsiveBounds)
                 ? widget.halfSizeScaffold!
                 : widget.fullSizeScaffold!
-            : (width < 1100)
+            : (width < widget.responsiveBounds)
                 ? HalfSizeScaffoldPage(
                     appBar: widget.appBar!,
                     drawer: widget.drawer!,

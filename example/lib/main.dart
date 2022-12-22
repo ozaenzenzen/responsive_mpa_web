@@ -1,58 +1,135 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
+import 'package:responsive_mpa_web/responsive_mpa_web.dart';
+import 'package:responsive_mpa_web_example/helper/fade_route.dart';
+import 'package:responsive_mpa_web_example/page/home_page.dart';
+import 'package:responsive_mpa_web_example/page/second_page.dart';
+import 'package:responsive_mpa_web_example/page/third_page.dart';
+import 'package:responsive_mpa_web_example/page/unknown_page.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final String _platformVersion = 'Unknown';
-
-  @override
-  void initState() {
-    super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    // String platformVersion;
-    // // Platform messages may fail, so we use a try/catch PlatformException.
-    // // We also handle the message potentially returning null.
-    // try {
-    //   platformVersion = await ResponsiveMpaWeb.platformVersion ?? 'Unknown platform version';
-    // } on PlatformException {
-    //   platformVersion = 'Failed to get platform version.';
-    // }
-
-    // // If the widget was removed from the tree while the asynchronous platform
-    // // message was in flight, we want to discard the reply rather than calling
-    // // setState to update our non-existent appearance.
-    // if (!mounted) return;
-
-    // setState(() {
-    //   _platformVersion = platformVersion;
-    // });
-  }
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // return MaterialApp.router(
+    //   routeInformationParser: RouteInformationParser(),
+    //   routerDelegate: routerDelegate,
+    // );
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
-        ),
+      title: 'Flutter Demo',
+      // home: const HomePage(),
+      home: ResponsiveMPAWeb(
+        listMenu: [
+          AppBarMenuButton(
+            menuText: const Text("Menu 1"),
+            // currentIndex: 1,
+            indexPage: 1,
+            onTap: (context) {
+              Navigator.push(
+                context,
+                FadeInRoute(
+                  page: const HomePage(),
+                  routeName: '/home',
+                ),
+              );
+            },
+          ),
+          AppBarMenuButton(
+            menuText: const Text("Menu 2"),
+            // currentIndex: 2,
+            indexPage: 2,
+            onTap: (context) {
+              Navigator.push(
+                context,
+                FadeInRoute(
+                  page: const SecondPage(),
+                  routeName: '/secondpage',
+                ),
+              );
+            },
+          ),
+          AppBarMenuButton(
+            menuText: const Text("Menu 3"),
+            // currentIndex: 3,
+            indexPage: 3,
+            onTap: (context) {
+              Navigator.push(
+                context,
+                FadeInRoute(
+                  page: const ThirdPage(),
+                  routeName: '/thirdpage',
+                ),
+              );
+            },
+          ),
+        ],
+        child: const HomePage(),
       ),
+      onGenerateRoute: (settings) {
+        debugPrint("[onGenerateRoute] settings name ${settings.name}");
+        if (settings.name == "/home") {
+          return PageRouteBuilder(
+            settings: settings, // Pass this to make popUntil(), pushNamedAndRemoveUntil(), works
+            pageBuilder: (_, __, ___) => const HomePage(),
+            transitionsBuilder: (_, a, __, c) => FadeTransition(
+              opacity: a,
+              child: c,
+            ),
+          );
+        }
+        if (settings.name == "/secondpage") {
+          return PageRouteBuilder(
+            settings: settings, // Pass this to make popUntil(), pushNamedAndRemoveUntil(), works
+            pageBuilder: (_, __, ___) => const SecondPage(),
+            transitionsBuilder: (_, a, __, c) => FadeTransition(
+              opacity: a,
+              child: c,
+            ),
+          );
+        }
+        if (settings.name == "/thirdpage") {
+          return PageRouteBuilder(
+            settings: settings, // Pass this to make popUntil(), pushNamedAndRemoveUntil(), works
+            pageBuilder: (_, __, ___) => const ThirdPage(),
+            transitionsBuilder: (_, a, __, c) => FadeTransition(
+              opacity: a,
+              child: c,
+            ),
+          );
+        }
+        return null;
+        // return PageRouteBuilder(
+        //   settings: settings, // Pass this to make popUntil(), pushNamedAndRemoveUntil(), works
+        //   pageBuilder: (_, __, ___) => const UnknownPage(),
+        //   transitionsBuilder: (_, a, __, c) => FadeTransition(
+        //     opacity: a,
+        //     child: c,
+        //   ),
+        // );
+      },
+      onUnknownRoute: (settings) {
+        debugPrint("[onUnknownRoute] settings.arguments ${settings.arguments}");
+        return PageRouteBuilder(
+          settings: settings, // Pass this to make popUntil(), pushNamedAndRemoveUntil(), works
+          pageBuilder: (_, __, ___) => const UnknownPage(),
+          transitionsBuilder: (_, a, __, c) => FadeTransition(
+            opacity: a,
+            child: c,
+          ),
+        );
+      },
+      initialRoute: '/',
+      routes: {
+        '/home': (context) => const HomePage(),
+        '/secondpage': (context) => const SecondPage(),
+        '/thirdpage': (context) => const ThirdPage(),
+        '/404': (context) => const UnknownPage(),
+      },
     );
   }
 }

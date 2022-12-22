@@ -1,4 +1,4 @@
-part of 'page.dart';
+part of 'web_page_widget.dart';
 
 class FullSizeScaffoldPage extends StatelessWidget {
   final PreferredSizeWidget appBar;
