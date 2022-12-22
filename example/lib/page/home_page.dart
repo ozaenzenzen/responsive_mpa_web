@@ -30,13 +30,7 @@ class _HomePageState extends State<HomePage> {
       bodyOnHalfSize: const Center(
         child: Text("Halaman Home"),
       ),
-      drawer: Container(
-        width: width * 0.4,
-        color: Colors.blueGrey.shade300,
-        child: ListView(
-          children: ResponsiveMPAWebConfig.listMenu,
-        ),
-      ),
+      drawer: const AppDrawer(),
     );
   }
 }
