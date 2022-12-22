@@ -3,7 +3,6 @@ import 'package:responsive_mpa_web/responsive_mpa_web.dart';
 
 part 'fullsize_scaffold.dart';
 part 'halfsize_scaffold.dart';
-part 'scaffold_page.dart';
 
 /// [WebPageWidget] is a main widget of this plugin. This widget have a purpose to create
 /// web page view.
