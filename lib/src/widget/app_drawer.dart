@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_mpa_web/responsive_mpa_web.dart';
 
+/// Widget contains drawer by `responsive_mpa_web` package
 class AppDrawer extends StatelessWidget {
   final double width;
   final Color color;
@@ -13,7 +14,6 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     return Container(
       // width: width * 0.4,
       width: width,
