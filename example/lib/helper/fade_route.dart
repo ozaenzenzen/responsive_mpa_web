@@ -22,6 +22,6 @@ class FadeInRoute extends PageRouteBuilder {
             opacity: animation,
             child: child,
           ),
-          transitionDuration: Duration(milliseconds: 300),
+          transitionDuration: const Duration(milliseconds: 300),
         );
 }

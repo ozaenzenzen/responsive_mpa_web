@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_mpa_web/responsive_mpa_web.dart';
-import 'package:responsive_mpa_web/src/responsive_mpa_web.dart';
 
 abstract class AppBarMenuWidget {}
 
