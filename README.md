@@ -2,6 +2,7 @@
 
 Flutter plugin for responsive web application with Multi Page Application experience.
 
+
 ## Usage/Examples
 
 How to use `responsive_mpa_web` package
@@ -108,3 +109,53 @@ class _HomePageState extends State<HomePage> {
 
 ```
 
+You can also use `WebPageWidget.customScaffold`, but you have to use `HalfSizeScaffoldPage` and `FullSizeScaffoldPage` widget
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:responsive_mpa_web/responsive_mpa_web.dart';
+
+class ThirdPage extends StatefulWidget {
+  const ThirdPage({Key? key}) : super(key: key);
+
+  @override
+  State<ThirdPage> createState() => _ThirdPageState();
+}
+
+class _ThirdPageState extends State<ThirdPage> {
+  int currentIndex = 3;
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    return WebPageWidget.customScaffold(
+      pageTitle: "Third Page",
+      index: 3,
+      backgroundDecoration: const BoxDecoration(
+        color: Colors.blueGrey,
+      ),
+      halfSizeScaffold: HalfSizeScaffoldPage(
+        appBar: const AppBarMenu(
+          appBarTitle: AppBarTitle.text(
+            text: Text("Third Page"),
+          ),
+        ),
+        body: const Center(
+          child: Text("Halaman Third"),
+        ),
+        drawer: const AppDrawer(),
+        typeDrawer: TypeDrawer.endDrawer,
+      ),
+      fullSizeScaffold: const FullSizeScaffoldPage(
+        appBar: AppBarMenu(
+          appBarTitle: AppBarTitle.text(
+            text: Text("Third Page"),
+          ),
+        ),
+        body: Center(
+          child: Text("Halaman Third"),
+        ),
+      ),
+    );
+  }
+}
+```
