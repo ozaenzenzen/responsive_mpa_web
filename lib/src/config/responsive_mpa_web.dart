@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_mpa_web/responsive_mpa_web.dart';
-import 'package:responsive_mpa_web/src/responsive_mpa_web.dart';
-import 'package:responsive_mpa_web/src/appbar/appbar_menu_button.dart';
 
 ///Main configuration of `responsive_mpa_web` plugin to set 
 ///`listMenu` in [AppBarMenu]
