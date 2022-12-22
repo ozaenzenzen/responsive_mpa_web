@@ -9,8 +9,6 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
-  int currentIndex = 2;
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;

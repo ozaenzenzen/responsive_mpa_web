@@ -13,21 +13,14 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // return MaterialApp.router(
-    //   routeInformationParser: RouteInformationParser(),
-    //   routerDelegate: routerDelegate,
-    // );
     return MaterialApp(
       title: 'Flutter Demo',
-      // home: const HomePage(),
       home: ResponsiveMPAWeb(
         listMenu: [
           AppBarMenuButton(
             menuText: const Text("Menu 1"),
-            // currentIndex: 1,
             indexPage: 1,
             onTap: (context) {
               Navigator.push(
@@ -41,7 +34,6 @@ class MyApp extends StatelessWidget {
           ),
           AppBarMenuButton(
             menuText: const Text("Menu 2"),
-            // currentIndex: 2,
             indexPage: 2,
             onTap: (context) {
               Navigator.push(
@@ -55,7 +47,6 @@ class MyApp extends StatelessWidget {
           ),
           AppBarMenuButton(
             menuText: const Text("Menu 3"),
-            // currentIndex: 3,
             indexPage: 3,
             onTap: (context) {
               Navigator.push(
@@ -103,14 +94,6 @@ class MyApp extends StatelessWidget {
           );
         }
         return null;
-        // return PageRouteBuilder(
-        //   settings: settings, // Pass this to make popUntil(), pushNamedAndRemoveUntil(), works
-        //   pageBuilder: (_, __, ___) => const UnknownPage(),
-        //   transitionsBuilder: (_, a, __, c) => FadeTransition(
-        //     opacity: a,
-        //     child: c,
-        //   ),
-        // );
       },
       onUnknownRoute: (settings) {
         debugPrint("[onUnknownRoute] settings.arguments ${settings.arguments}");
