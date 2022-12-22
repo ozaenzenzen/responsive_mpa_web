@@ -74,7 +74,7 @@ class WebPageWidget extends StatefulWidget {
   final FullSizeScaffoldPage? fullSizeScaffold;
 
   /// You can build your own [PreferredSizeWidget] or use [AppBarMenuV2]
-  /// widget from this `fzn_responsive_web` plugin
+  /// widget from this `responsive_mpa_web` plugin
   final PreferredSizeWidget? appBar;
   final Widget? drawer;
 
