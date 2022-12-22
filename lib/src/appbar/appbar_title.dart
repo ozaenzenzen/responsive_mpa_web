@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_mpa_web/src/appbar/enum_appbartitletype.dart';
 
 abstract class AppBarTitleWidget extends PreferredSizeWidget {}
-
-enum AppBarTitleType { widget, image, text }
 
 class AppBarTitle extends StatelessWidget {
   final Widget? widget;

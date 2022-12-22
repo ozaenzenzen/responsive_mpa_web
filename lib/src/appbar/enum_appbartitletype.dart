@@ -1,0 +1,1 @@
+enum AppBarTitleType { widget, image, text }
