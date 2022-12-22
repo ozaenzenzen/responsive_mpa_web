@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:responsive_mpa_web/responsive_mpa_web.dart';
 
 /// Widget contains drawer by `responsive_mpa_web` package
+///  
+/// [AppDrawer] can be use inside [HalfSizeScaffoldPage] widget for 
+/// `drawer` parameter
 class AppDrawer extends StatelessWidget {
   final double width;
   final Color color;
