@@ -1,5 +1,5 @@
 
-import 'package:responsive_mpa_web/src/appbar/appbar_menu_button.dart';
+import 'package:responsive_mpa_web/responsive_mpa_web.dart';
 
 class ResponsiveMPAWebConfig {
   static int activeIndex = 0;

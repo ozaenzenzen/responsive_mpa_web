@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_mpa_web/src/appbar/enum_appbartitletype.dart';
+import 'package:responsive_mpa_web/responsive_mpa_web.dart';
 
 abstract class AppBarTitleWidget extends PreferredSizeWidget {}
 
