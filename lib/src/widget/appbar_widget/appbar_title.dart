@@ -3,6 +3,21 @@ import 'package:responsive_mpa_web/responsive_mpa_web.dart';
 
 abstract class AppBarTitleWidget extends PreferredSizeWidget {}
 
+
+/// [AppBarTitle] is a widget to define your web name on the appbar
+/// 
+/// You can use either 
+/// ```dart
+/// AppBarTitle.image(image: image) 
+/// ```
+/// or
+/// ```dart
+/// AppBarTitle.widget(widget: widget) 
+/// ```
+/// or
+/// ```dart
+/// AppBarTitle.text(text: text)
+/// ```
 class AppBarTitle extends StatelessWidget {
   final Widget? widget;
   final Image? image;
