@@ -24,7 +24,6 @@ class _ThirdPageState extends State<ThirdPage> {
           appBarTitle: AppBarTitle.text(
             text: Text("Third Page"),
           ),
-          // listMenu: listMenu,
         ),
         body: const Center(
           child: Text("Halaman Third"),
@@ -43,7 +42,6 @@ class _ThirdPageState extends State<ThirdPage> {
           appBarTitle: AppBarTitle.text(
             text: Text("Third Page"),
           ),
-          // listMenu: listMenu,
         ),
         body: Center(
           child: Text("Halaman Third"),

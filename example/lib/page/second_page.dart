@@ -22,7 +22,6 @@ class _SecondPageState extends State<SecondPage> {
         appBarTitle: const AppBarTitle.text(
           text: Text("Second Page"),
         ),
-        // listMenu: listMenu,
         onTapToHomePage: () {},
       ),
       bodyOnFullSize: const Center(
