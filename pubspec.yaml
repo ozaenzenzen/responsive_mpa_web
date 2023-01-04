@@ -1,6 +1,6 @@
 name: responsive_mpa_web
 description: Flutter plugin for responsive web application with Multi Page Application experience.
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/ozaenzenzen/responsive_mpa_web
 
 environment:
