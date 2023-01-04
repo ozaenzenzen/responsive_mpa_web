@@ -1,6 +1,9 @@
 part of 'web_page_widget.dart';
 
 class HalfSizeScaffoldPage extends StatelessWidget {
+  /// You can build drawer Widget with Container Widget. 
+  /// Recommendation of the width size is using 
+  /// `MediaQuery.of(context).size.width * 0.4`
   final Widget drawer;
   final TypeDrawer typeDrawer;
   final PreferredSizeWidget appBar;
@@ -16,12 +19,20 @@ class HalfSizeScaffoldPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: (typeDrawer == TypeDrawer.drawer) ? drawer : null,
-      endDrawer: (typeDrawer == TypeDrawer.endDrawer) ? drawer : null,
-      backgroundColor: Colors.transparent,
-      appBar: appBar,
-      body: body,
-    );
+    if (typeDrawer == TypeDrawer.drawer) {
+      return Scaffold(
+        drawer: drawer,
+        backgroundColor: Colors.transparent,
+        appBar: appBar,
+        body: body,
+      );
+    } else {
+      return Scaffold(
+        endDrawer: drawer,
+        backgroundColor: Colors.transparent,
+        appBar: appBar,
+        body: body,
+      );
+    }
   }
 }
