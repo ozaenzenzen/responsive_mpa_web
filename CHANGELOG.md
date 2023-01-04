@@ -1,4 +1,5 @@
-## 0.0.2
+## 0.0.3
 
-* Add responsive bounds to WebPageWidget class
-* Fix [AppDrawer] bug
+* Add [WebPageView] widget
+* Fix page / window title bug
+* remove [ResponsiveMPAWebConfig] class
