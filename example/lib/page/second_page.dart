@@ -9,8 +9,6 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
-  int currentIndex = 2;
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -24,7 +22,6 @@ class _SecondPageState extends State<SecondPage> {
         appBarTitle: const AppBarTitle.text(
           text: Text("Second Page"),
         ),
-        // listMenu: listMenu,
         onTapToHomePage: () {},
       ),
       bodyOnFullSize: const Center(

@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:responsive_mpa_web/responsive_mpa_web.dart';
 
 /// [AppBarMenuButton] is a widget to set up button of the appbar
-/// 
-/// This widget should be use inside [ResponsiveMPAWeb] widget 
+///
+/// This widget should be use inside [ResponsiveMPAWeb] widget
 /// for `listMenu` parameter
 class AppBarMenuButton extends StatelessWidget {
-  final Function(BuildContext context)? onTap;
+  final Function()? onTap;
+  final String? pageTitle;
   final int? indexPage;
   final Color? borderColor;
   final Color? activeBorderColor;
@@ -17,6 +18,7 @@ class AppBarMenuButton extends StatelessWidget {
   const AppBarMenuButton({
     Key? key,
     this.onTap,
+    required this.pageTitle,
     required this.indexPage,
     required this.menuText,
     this.height = 60,
@@ -25,11 +27,20 @@ class AppBarMenuButton extends StatelessWidget {
     this.activeBorderColor = Colors.grey,
   }) : super(key: key);
 
+  static bool isFirstTime = true;
+
   @override
   Widget build(BuildContext context) {
+    if (isFirstTime) {
+      ResponsiveMPAWebConfig.activeIndex = indexPage!;
+      FunctionHelper.setPageTitle(pageTitle!, context);
+      isFirstTime = false;
+    }
     return InkWell(
       onTap: () {
-        onTap!(context);
+        ResponsiveMPAWebConfig.activeIndex = indexPage!;
+        FunctionHelper.setPageTitle(pageTitle!, context);
+        onTap!();
       },
       child: Container(
         alignment: Alignment.center,
@@ -37,7 +48,7 @@ class AppBarMenuButton extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
           border: Border(
-            bottom: (ResponsiveMPAWebConfig.activeIndex == indexPage)
+            bottom: (indexPage == ResponsiveMPAWebConfig.activeIndex)
                 ? BorderSide(
                     style: BorderStyle.solid,
                     width: 2,

@@ -10,23 +10,23 @@ abstract class AppBarMenuWidget {}
 class AppBarMenu extends StatelessWidget implements PreferredSizeWidget {
   final Function()? onTapToHomePage;
   final AppBarTitle appBarTitle;
-  // final List<Widget> listMenu;
   final Color? iconColor;
   final double? iconSize;
   final Icon? iconMenu;
   final double height;
   final double widthBetweenMenu;
+  final TypeDrawer typeDrawer;
   // final bool useIconMenu;
 
   const AppBarMenu({
     Key? key,
     required this.appBarTitle,
-    // required this.listMenu,
     this.onTapToHomePage,
     this.height = 80,
     this.iconColor = Colors.black,
     this.iconSize = 35,
     this.widthBetweenMenu = 10,
+    this.typeDrawer = TypeDrawer.endDrawer,
   })  : iconMenu = null,
         // useIconMenu = false,
         super(key: key);
@@ -34,11 +34,11 @@ class AppBarMenu extends StatelessWidget implements PreferredSizeWidget {
   const AppBarMenu.customIconMenu({
     Key? key,
     required this.appBarTitle,
-    // required this.listMenu,
     required this.iconMenu,
     this.onTapToHomePage,
     this.height = 80,
     this.widthBetweenMenu = 10,
+    this.typeDrawer = TypeDrawer.endDrawer,
   })  : iconColor = null,
         iconSize = null,
         // useIconMenu = true,
@@ -76,7 +76,11 @@ class AppBarMenu extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 child: IconButton(
                   onPressed: () {
-                    Scaffold.of(context).openEndDrawer();
+                    ResponsiveMPAWebConfig.activeIndex = ResponsiveMPAWebConfig.activeIndex;
+                    ResponsiveMPAWebConfig.openDrawer(
+                      context,
+                      typeDrawer: typeDrawer,
+                    );
                   },
                   padding: const EdgeInsets.all(0),
                   icon: (iconMenu != null)
@@ -120,7 +124,6 @@ class AppBarMenu extends StatelessWidget implements PreferredSizeWidget {
                 margin: const EdgeInsets.only(right: 80),
                 // child: Row(
                 //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                //   // children: listMenu,
                 //   children: ResponsiveMPAWebConfig.listMenu,
                 // ),
                 child: ListView.separated(
@@ -129,7 +132,7 @@ class AppBarMenu extends StatelessWidget implements PreferredSizeWidget {
                   itemBuilder: (context, index) {
                     return AppBarMenuButton(
                       onTap: ResponsiveMPAWebConfig.listMenu[index].onTap,
-                      // currentIndex: ResponsiveMPAWebConfig.listMenu[index].currentIndex,
+                      pageTitle: ResponsiveMPAWebConfig.listMenu[index].pageTitle,
                       indexPage: ResponsiveMPAWebConfig.listMenu[index].indexPage,
                       menuText: ResponsiveMPAWebConfig.listMenu[index].menuText,
                       borderColor: ResponsiveMPAWebConfig.listMenu[index].borderColor,

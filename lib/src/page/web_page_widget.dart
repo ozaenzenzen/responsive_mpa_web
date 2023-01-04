@@ -7,14 +7,14 @@ part 'halfsize_scaffold.dart';
 /// [WebPageWidget] is a main widget of this plugin. This widget have a purpose to create
 /// web page view.
 ///
-/// Example:
+/// example:
 /// ```dart
 /// WebPageWidget(
 ///   pageTitle: "Home Page",
 ///   backgroundDecoration: BoxDecoration(
 ///     color: Colors.blueGrey,
 ///   ),
-///   appBar: AppBarMenuV2(
+///   appBar: AppBarMenu(
 ///     appBarMenuTitle: const AppBarTitle.text(
 ///       text: Text("Home Page"),
 ///     ),
@@ -46,7 +46,7 @@ part 'halfsize_scaffold.dart';
 ///     color: Colors.blueGrey,
 ///   ),
 ///   halfSizeScaffold: HalfSizeScaffoldPage(
-///     appBar: AppBarMenuV2(
+///     appBar: AppBarMenu(
 ///       appBarMenuTitle: const AppBarTitle.text(
 ///         text: Text("Home Page"),
 ///       ),
@@ -57,7 +57,7 @@ part 'halfsize_scaffold.dart';
 ///     typeDrawer: TypeDrawer.endDrawer,
 ///   ),
 ///   fullSizeScaffold: FullSizeScaffoldPage(
-///     appBar: AppBarMenuV2(
+///     appBar: AppBarMenu(
 ///       appBarMenuTitle: const AppBarTitle.text(
 ///         text: Text("Home Page"),
 ///       ),
@@ -73,8 +73,8 @@ class WebPageWidget extends StatefulWidget {
   final HalfSizeScaffoldPage? halfSizeScaffold;
   final FullSizeScaffoldPage? fullSizeScaffold;
 
-  /// You can build your own [PreferredSizeWidget] or use [AppBarMenuV2]
-  /// widget from this `fzn_responsive_web` plugin
+  /// You can build your own [PreferredSizeWidget] or use [AppBarMenu]
+  /// widget from this `responsive_mpa_web` plugin
   final PreferredSizeWidget? appBar;
   final Widget? drawer;
 
@@ -131,31 +131,36 @@ class WebPageWidget extends StatefulWidget {
 class _WebPageWidgetState extends State<WebPageWidget> {
   @override
   Widget build(BuildContext context) {
-    ResponsiveMPAWebConfig.activeIndex = widget.index;
     double width = MediaQuery.of(context).size.width;
-    FunctionHelper.setPageTitle(widget.pageTitle, context);
 
-    return Stack(
-      children: [
-        Container(
-          decoration: widget.backgroundDecoration,
-        ),
-        (widget.useCustomScaffold)
-            ? (width < widget.responsiveBounds)
-                ? widget.halfSizeScaffold!
-                : widget.fullSizeScaffold!
-            : (width < widget.responsiveBounds)
-                ? HalfSizeScaffoldPage(
-                    appBar: widget.appBar!,
-                    drawer: widget.drawer!,
-                    typeDrawer: widget.typeDrawer!,
-                    body: widget.bodyOnHalfSize,
-                  )
-                : FullSizeScaffoldPage(
-                    appBar: widget.appBar!,
-                    body: widget.bodyOnFullSize,
-                  ),
-      ],
+    return WillPopScope(
+      onWillPop: () async {
+        ResponsiveMPAWebConfig.activeIndex = widget.index;
+        FunctionHelper.setPageTitle(widget.pageTitle, context);
+        return true;
+      },
+      child: Stack(
+        children: [
+          Container(
+            decoration: widget.backgroundDecoration,
+          ),
+          (widget.useCustomScaffold)
+              ? (width < widget.responsiveBounds)
+                  ? widget.halfSizeScaffold!
+                  : widget.fullSizeScaffold!
+              : (width < widget.responsiveBounds)
+                  ? HalfSizeScaffoldPage(
+                      appBar: widget.appBar!,
+                      drawer: widget.drawer!,
+                      typeDrawer: widget.typeDrawer!,
+                      body: widget.bodyOnHalfSize,
+                    )
+                  : FullSizeScaffoldPage(
+                      appBar: widget.appBar!,
+                      body: widget.bodyOnFullSize,
+                    ),
+        ],
+      ),
     );
   }
 }
