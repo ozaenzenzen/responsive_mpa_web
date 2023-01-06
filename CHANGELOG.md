@@ -1,5 +1,3 @@
-## 0.0.3
+## 0.0.4
 
-* Add [WebPageView] widget
-* Fix page / window title bug
-* remove [ResponsiveMPAWebConfig] class
+* set plugin platform -> web
