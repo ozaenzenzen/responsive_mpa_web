@@ -1,6 +1,7 @@
 ## 0.0.4
 
 * set plugin platform -> web
+* set platform support in `pubspec.yaml`
 
 ## 0.0.3
 
