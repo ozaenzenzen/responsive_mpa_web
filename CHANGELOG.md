@@ -2,6 +2,7 @@
 
 * set plugin platform -> web
 * set platform support in `pubspec.yaml`
+* add MIT License
 
 ## 0.0.3
 
