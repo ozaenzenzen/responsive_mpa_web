@@ -3,6 +3,10 @@
 * set plugin platform -> web
 * set platform support in `pubspec.yaml`
 * add MIT License
+* remove default constructor for 
+```dart 
+AppBarTitle()
+```
 
 ## 0.0.3
 
