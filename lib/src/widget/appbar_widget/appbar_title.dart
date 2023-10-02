@@ -8,15 +8,15 @@ abstract class AppBarTitleWidget extends PreferredSizeWidget {}
 /// 
 /// You can use either 
 /// ```dart
-/// AppBarTitle.image(image: image) 
+/// AppBarTitle.image(image: Image()) 
 /// ```
 /// or
 /// ```dart
-/// AppBarTitle.widget(widget: widget) 
+/// AppBarTitle.widget(widget: Widget()) 
 /// ```
 /// or
 /// ```dart
-/// AppBarTitle.text(text: text)
+/// AppBarTitle.text(text: Text())
 /// ```
 class AppBarTitle extends StatelessWidget {
   final Widget? widget;
@@ -24,13 +24,13 @@ class AppBarTitle extends StatelessWidget {
   final Text? text;
   final AppBarTitleType type;
 
-  const AppBarTitle({
-    Key? key,
-    required this.widget,
-  })  : type = AppBarTitleType.widget,
-        image = null,
-        text = null,
-        super(key: key);
+  // const AppBarTitle({
+  //   Key? key,
+  //   required this.widget,
+  // })  : type = AppBarTitleType.widget,
+  //       image = null,
+  //       text = null,
+  //       super(key: key);
 
   const AppBarTitle.widget({
     Key? key,
