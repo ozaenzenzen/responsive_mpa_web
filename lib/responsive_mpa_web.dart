@@ -2,7 +2,7 @@ library responsive_mpa_web;
 
 export 'src/responsive_mpa_web.dart';
 export 'src/page/web_page_widget.dart';
-export 'src/page/web_page_view.dart';
+export 'src/page/web_scaffold.dart';
 export 'src/helper/function_helper.dart';
 export 'src/widget/appbar_widget/appbar_menu_button.dart';
 export 'src/widget/appbar_widget/appbar_menu.dart';

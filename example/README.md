@@ -6,7 +6,7 @@ Flutter plugin for responsive web application with Multi Page Application experi
 
 How to use `responsive_mpa_web` package
 
-You should create `WebPageView` as the first screen of the `MaterialApp` to define list of menu in appBar and pages of the app.
+You should create `WebScaffold` as the first screen of the `MaterialApp` to define list of menu in appBar and pages of the app.
 
 First you should create MaterialApp widget.  
 Example as below:
@@ -77,7 +77,7 @@ class MyApp extends StatelessWidget {
 }
 
 ```
-How to use `WebPageView` widget.
+How to use `WebScaffold` widget.
 ```dart
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -89,7 +89,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return WebPageView(
+    return WebScaffold(
       listMenuBar: <AppBarMenuButton>[
         AppBarMenuButton(
           menuText: const Text("Menu 1"),

@@ -7,7 +7,7 @@ import 'package:responsive_mpa_web/responsive_mpa_web.dart';
 /// 
 /// example:
 /// ```dart
-/// return WebPageView(
+/// return WebScaffold(
 ///   listMenuBar: <AppBarMenuButton>[
 ///     AppBarMenuButton(
 ///       menuText: const Text("Menu 1"),
