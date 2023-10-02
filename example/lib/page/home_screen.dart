@@ -15,8 +15,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return WebPageView(
-      listMenuBar: <AppBarMenuButton>[
+    return WebScaffold(
+      menuBar: <AppBarMenuButton>[
         AppBarMenuButton(
           menuText: const Text("Menu 1"),
           pageTitle: "Home Page",
@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
       ],
-      listWebPages: const [
+      menuBarView: const [
         HomePage(),
         SecondPage(),
         ThirdPage(),

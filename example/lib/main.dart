@@ -68,8 +68,8 @@ class MyApp extends StatelessWidget {
         // '/': (context) => const HomeScreen(),
         /// This is HomeScreen widget looks like
         '/': (context) {
-          return WebPageView(
-            listMenuBar: <AppBarMenuButton>[
+          return WebScaffold(
+            menuBar: <AppBarMenuButton>[
               AppBarMenuButton(
                 menuText: const Text("Menu 1"),
                 pageTitle: "Home Page",
@@ -113,7 +113,7 @@ class MyApp extends StatelessWidget {
                 },
               ),
             ],
-            listWebPages: const [
+            menuBarView: const [
               HomePage(),
               SecondPage(),
               ThirdPage(),

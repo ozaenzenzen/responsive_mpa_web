@@ -59,29 +59,29 @@ import 'package:responsive_mpa_web/responsive_mpa_web.dart';
 ///   ],
 /// );
 /// ```
-class WebPageView extends StatefulWidget {
-  final List<AppBarMenuButton> listMenuBar;
-  final List<Widget> listWebPages;
+class WebScaffold extends StatefulWidget {
+  final List<AppBarMenuButton> menuBar;
+  final List<Widget> menuBarView;
   final double responsiveBounds;
 
-  const WebPageView({
+  const WebScaffold({
     Key? key,
-    required this.listMenuBar,
-    required this.listWebPages,
+    required this.menuBar,
+    required this.menuBarView,
     this.responsiveBounds = 1100,
   }) : super(key: key);
 
   @override
-  State<WebPageView> createState() => _WebPageViewState();
+  State<WebScaffold> createState() => _WebScaffoldState();
 }
 
-class _WebPageViewState extends State<WebPageView> {
+class _WebScaffoldState extends State<WebScaffold> {
   double width = 0;
   @override
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
-    ResponsiveMPAWebConfig.listMenu = widget.listMenuBar;
-    ResponsiveMPAWebConfig.appPages = widget.listWebPages;
+    ResponsiveMPAWebConfig.listMenu = widget.menuBar;
+    ResponsiveMPAWebConfig.appPages = widget.menuBarView;
 
     return ResponsiveMPAWebConfig.appPages.first;
   }
